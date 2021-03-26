@@ -18,11 +18,11 @@ const output = solc.compile(source, 1).contracts
 // Re-create build folder
 fs.ensureDirSync(buildPath)
 
-console.log(output)
+// console.log(output)
 // Write output to the 'build' directory contract.replace(':', '')
 for (let contract in output) {
     fs.outputJSONSync(
-        path.resolve(buildPath, contract + '.json'),
+        path.resolve(buildPath, contract.replace(':', '') + '.json'),
         output[contract]
     )
 }

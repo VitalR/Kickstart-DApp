@@ -79,7 +79,7 @@ contract Crowdfunding {
         require(requist.approvalCount > (approversCount / 2), "Less then 50% approvals.");
         
         requist.recipient.transfer(requist.value);
+        // totalAmount -= request.value;
         requist.complete = true;
-        totalAmount -= request.value;
     }
 }
