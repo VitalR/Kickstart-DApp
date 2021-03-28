@@ -121,7 +121,7 @@ describe('Crowdfunding', () => {
         assert(balance > 103)
     })
 
-    it('allows approve request for contributors and only one time for approvers', async () => {
+    it('allows approve request for contributors and only one time', async () => {
         await crowdfunding.methods.contribute().send({
             from: accounts[1],
             value: web3.utils.toWei('10', 'ether')
@@ -155,5 +155,5 @@ describe('Crowdfunding', () => {
         } catch (err) {
             assert(err)
         }
-    })
+    })   
 })
