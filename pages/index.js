@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { Button, Card } from 'semantic-ui-react'
 import factory from '../ethereum/factory'
 import Layout from '../components/Layout'
+import { Link } from '../routes'
 
 class CrowdfundingIndex extends Component {
     static async getInitialProps() {
@@ -14,7 +15,11 @@ class CrowdfundingIndex extends Component {
         const items = this.props.crowdfunds.map(address => {
             return {
                 header: address,
-                description: <a>View Crowdfunding</a>,
+                description: (
+                    <Link route={`/projects/${address}`}>
+                        <a>View Project</a>
+                    </Link>
+                ), 
                 fluid: true
             }
         })
@@ -35,12 +40,16 @@ class CrowdfundingIndex extends Component {
                     async
                     src="//cdn.jsdelivr.net/npm/semantic-ui/dist/semantic.min.js"
                 ></script>
-                <h3>Open Crowdfunding Projects</h3>        
-                <Button floated="right"
-                    content="Create Project"
-                    icon="add circle"
-                    primary 
-                />
+                <h3>Open Crowdfunding Projects</h3>
+                <Link route="/projects/new">
+                    <a>
+                        <Button floated="right"
+                            content="Create Project"
+                            icon="add circle"
+                            primary 
+                        />
+                    </a>
+                </Link>       
                 {this.renderCrowdfunds()}
             </div>
         </Layout>

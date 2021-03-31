@@ -82,4 +82,18 @@ contract Crowdfunding {
         // totalAmount -= request.value;
         requist.complete = true;
     }
+
+    function getSummary() public view returns(uint, uint, uint, uint, address) {
+        return(
+            minimunContrubution,
+            this.balance,
+            requests.length,
+            approversCount,
+            manager
+        );
+    }
+
+    function getRequestsCount() public view returns(uint) {
+        return requests.length;
+    }
 }
